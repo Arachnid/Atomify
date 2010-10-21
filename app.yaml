@@ -14,3 +14,7 @@ handlers:
 
 - url: /.*
   script: request.py
+
+
+inbound_services:
+- mail
