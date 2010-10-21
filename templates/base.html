@@ -1,0 +1,17 @@
+<html>
+<head>
+  <title>{% block title %}{% endblock %} - Atomify</title>
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <div style="float:right">
+    {% if user %}
+      Logged in as {{user.nickname}}<br />
+      <a href="{{login_url}}">Log Out</a>
+    {% else %}
+      <a href="{{login_url}}">Log In</a>
+    {% endif %}
+  </div>
+  {% block body %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Alias created{% endblock %}
+{% block body %}
+  <h1>Alias created</h1>
+
+  <p>Email sent to <b>{{alias.name}}@atomify.appspotmail.com</b> will be
+  delivered to the atom feed <b><a href="{{feed.url}}">{{feed.url}}</a></b>.</p>
+  
+  {% if user %}
+    <p>This alias has been added to your list of feeds on the <a href="/">homepage</a>.</p>
+  {% else %}
+    <p>Since you are not logged in, this is an 'anonymous' mapping. Make sure
+    to write it down - there's no way to recover it if you lose it!</p>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block body %}
+  <h1>Atomify</h1>
+  <h2>From email to Atom</h2>
+  
+  <p>Atomify is an email to Atom gateway. After creating an atomify email
+  address, any email sent to it will be published to your own private Atom feed,
+  which you can subscribe to in the feed reader of your choice, or consume using
+  your own application.</p>
+  
+  <p>Atomify is <a href="http://code.google.com/p/pubsubhubbub/">PubSubHubbub</a>-enabled!
+  This means that if your consumer - such as <a href="http://reader.google.com/">Google Reader</a>
+  also supports PubSubHubbub, you will receive new items instantly, as soon as
+  they are posted.</p>
+
+  {% if aliases %}
+    <h2>Your atomify feeds</h2>
+    <table>
+      <thead>
+        <tr><th>Alias</th><th>Feed URL</th></tr>
+      </thead>
+      {% for alias in aliases %}
+        <tr>
+          <td>{{alias.name}}@atomify.appspotmail.com</td>
+          <td><a href="{{alias.feed.url}}">{{alias.feed.url}}</a></td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% endif %}
+  
+  <h2>Create a new feed</h2>
+  <form method="post" action="/create">
+    Address (leave blank for random): <input type="text" name="address" />@atomify.appspotmail.com
+    <input type="submit" value="Create" />
+  </form>
+{% endblock %}

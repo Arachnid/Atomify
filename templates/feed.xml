@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>{{feed.title|escape}}</title>
+  <link rel="self" href="{{self_url|escape}}" />
+  <updated>{{updated.isoformat}}Z</updated>
+  <id>tag:atomify.appspot.com,2010:{{feed.name}}</id>
+  
+  {% for entry in entries %}
+    <entry>
+      <id>tag:atomify.appspot.com,2010:{{feed.name}}/{{entry.message_id}}</id>
+      <title>{{entry.title|escape}}</title>
+      <updated>{{entry.created.isoformat}}Z</updated>
+      <author>
+        <email>{{entry.author_email|escape}}</email>
+      </author>
+      <content type="{{entry.content_type}}">{{entry.content|escape}}</content>
+      <link rel="alternate" href="{{host_url}}/feed/{{feed.name}}/{{entry.message_id}}" />
+      <published>{{entry.published.isoformat}}Z</published>
+    </entry>
+  {% endfor %}
+</feed>

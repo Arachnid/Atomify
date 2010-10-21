@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Create an Alias{% endblock %}
+{% block body %}
+  <h1>Alias already exists</h1>
+  <p>The alias {{address}}@atomify.appspotmail.com is already in use. Please
+  choose another identifier.</p>
+
+  <form method="post" action="/create">
+    Address (leave blank for random): <input type="text" name="address" />@atomify.appspotmail.com
+    <input type="submit" value="Create" />
+  </form>
+{% endblock %}
