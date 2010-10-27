@@ -117,4 +117,4 @@ class EmailMessage(Message):
 
   original = property(lambda self:self.body)
   original_content_type = 'message/rfc822'
-  published = property(lambda self:self.message.date)
+  published = property(lambda self:self.created)
